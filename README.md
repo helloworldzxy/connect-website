@@ -6,3 +6,7 @@
 2. use connect
 
 将index.html和images文件夹移到/website目录下。
+
+3. middleware example
+
+使用中间件改写noConnectServer.js
