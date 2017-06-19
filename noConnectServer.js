@@ -2,8 +2,11 @@ var http = require('http'),
 	fs = require('fs');
 
 var server = http.createServer(function(req, res){
+
+	console.log('  %s  %s  ', req.method, req.url);
+
 	if('GET' == req.method && '/images' == req.url.substr(0, 7)
-	 && '.jpg' == req.url.substr(-4)){
+	 && '.jpg' == req.url.substr(-4)){ //serve an image
 	 	/**
 	 	 * 检查文件是否存在
 	 	 * 不使用同步的fs.statSync()，否则当处理磁盘文件时会阻塞其他请求的处理。
@@ -19,9 +22,9 @@ var server = http.createServer(function(req, res){
 	 		}
 	 	});
 
-	} else if('GET' == req.method && '/' == req.url){
+	} else if('GET' == req.method && '/' == req.url){ //serve index.html
 		serve(__dirname + '/index.html', 'text/html');
-	} else{
+	} else{  //display 404
 		res.writeHead(200);
 		res.end('Not Found');
 	}
