@@ -1,11 +1,14 @@
 var connect = require('connect'),
-	users = require('./users'); //JSON文件可以直接被引入，不需要使用module.exports来暴露资源
+	users = require('./users'), //JSON文件可以直接被引入，不需要使用module.exports来暴露资源
+	session = require('express-session'),
+	RedisStore = require('connect-redis')(session);
 
 var server = connect(
 	connect.logger('dev'),
 	connect.bodyParser(),
 	connect.cookieParser(), //session是通过cookie实现的
-	connect.session({ secret: 'my app secret' }), //初始化session中间件需要提供secret选项
+	// connect.session({ secret: 'my app secret' }), //初始化session中间件需要提供secret选项
+	connect.session({ store: new RedisStore, secret: 'my secret' }),
 	//先检测用户是否登录，如果没有登录则交给其他中间件
 	function(req, res, next){
 		if('/' == req.url && req.session.logged_in){
@@ -62,5 +65,8 @@ var server = connect(
 		}
 	}
 );
+
+//使用Redis持久化session
+// server.use(connect.session({ store: new RedisStore, secret: 'my secret' }));
 
 server.listen(3000);
