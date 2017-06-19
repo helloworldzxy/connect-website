@@ -42,3 +42,5 @@ server.use(function(req, res, next){
 
 // 日志记录
 server.use(connect.logger('dev'));
+
+server.listen(3000);

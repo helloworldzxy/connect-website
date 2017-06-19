@@ -30,20 +30,20 @@ var server = http.createServer(function(req, res){
 	}
 
 	function serve(path, type){
-	res.writeHead(200, { 'Content-Type': type });
+		res.writeHead(200, { 'Content-Type': type });
 
-	fs.createReadStream(path).pipe(res);
-	/**
-	 * 将fs流读出的数据一边写入res中，等同于：
-	 */
-	// fs.createReadStream(path)
-	//   .on('data', function(data){
-	//   	res.write(data);
-	//   })
-	//   .on('end', function(){
-	//   	res.end();
-	//   });
-}
+		fs.createReadStream(path).pipe(res);
+		/**
+		 * 将fs流读出的数据一边写入res中，等同于：
+		 */
+		// fs.createReadStream(path)
+		//   .on('data', function(data){
+		//   	res.write(data);
+		//   })
+		//   .on('end', function(){
+		//   	res.end();
+		//   });
+	}
 
 });
 

@@ -14,3 +14,6 @@
 4. write a middleware
 middleware: request-time.js
 test: sample.js
+
+5. connect built-in middlwares
+body parser中的文件上传功能没实现
