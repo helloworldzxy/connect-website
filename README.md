@@ -10,3 +10,7 @@
 3. middleware example
 
 使用中间件改写noConnectServer.js
+
+4. write a middleware
+middleware: request-time.js
+test: sample.js
