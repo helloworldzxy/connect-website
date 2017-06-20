@@ -48,7 +48,7 @@ sessionTest.js
 
 注意：
 
-1）在写检测登录，session中间件得在展示表单等中间件函数前引入。
+1）中间件是串行执行的，session中间件得在检测登录、展示表单等中间件函数前引入。
 
 2）connect-redis包需要使用express-session包。而不是connect。（可能又是和body parser的上传功能一样，从connect独立出来的部分，学到Express框架再验证。）
 

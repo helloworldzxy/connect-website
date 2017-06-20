@@ -8,6 +8,7 @@ var server = connect(
 	connect.bodyParser(),
 	connect.cookieParser(), //session是通过cookie实现的
 	// connect.session({ secret: 'my app secret' }), //初始化session中间件需要提供secret选项
+	//使用Redis持久化session
 	connect.session({ store: new RedisStore, secret: 'my secret' }),
 	//先检测用户是否登录，如果没有登录则交给其他中间件
 	function(req, res, next){
@@ -65,8 +66,5 @@ var server = connect(
 		}
 	}
 );
-
-//使用Redis持久化session
-// server.use(connect.session({ store: new RedisStore, secret: 'my secret' }));
 
 server.listen(3000);
