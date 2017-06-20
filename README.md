@@ -60,3 +60,5 @@ var session = require('express-session'),
 使用Redis持久化session后，重启服务器进程会话状态仍然保存（但是得是同一个浏览器，比如原来用Chrome登录，重启服务器进程后，重启Chrome可以重现session状态，但是再打开新的浏览器比如Safari就不行），毕竟session是依赖cookie的。
 
 解析生成的dump.rdb文件：[redis-rdb-tools](https://github.com/sripathikrishnan/redis-rdb-tools)
+
+8. midwrTest.js finished

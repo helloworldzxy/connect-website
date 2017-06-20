@@ -93,3 +93,25 @@ server.use(functoin(req, res, next){
 	// req.cookies.secret1 == "value";
 	// req.cookies.secret2 == "value2";
 });
+
+/**
+ * 5. sessionTest.js
+ */
+
+/**
+ * 6. methodOverride中间件。
+ * 早期浏览器不支持PUT, DELETE, PATCH
+ * 解决方案：在GET或POST请求中添加_method变量
+ * POST /url?method=PUT HTTP/1.1
+ * 使用中间件的做法：（一般和Express一起用而不是connect）
+ */
+server.use(connect.methodOverride());
+
+/**
+ * 7. basicAuth中间件
+ */
+
+
+
+
+
